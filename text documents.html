@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>shaweb</title>
+<style>
+  #visitorCount {
+    color: white;
+  }
+</style>
+</head>
+<body bgcolor="tomato">
+
+<p style="font-size:50px;">welcome to shaweb</p>
+
+<img src="C:/Users/info/Pictures/photo%206.jpg" alt="shafquat" width="400" height="333">
+
+<h1> we are extremely happy for you to visit shaweb </h1>
+<h1 style="color:yellow;">the amount of people visiting this web in your live time is</h1>
+
+<h1 id="visitorCount">Visitors: <span id="count">0</span></h1>
+
+<script>
+  function updateVisitorCount() {
+    let hasVisited = localStorage.getItem('hasVisited');
+    let totalVisitors = localStorage.getItem('totalVisitors');
+
+    if (!hasVisited) {
+      // First-time visitor
+      localStorage.setItem('hasVisited', 'true'); //Mark user as visited.
+
+      if (totalVisitors === null) {
+        // First visitor ever
+        totalVisitors = 1;
+      } else {
+        totalVisitors = parseInt(totalVisitors) + 1;
+      }
+
+      localStorage.setItem('totalVisitors', totalVisitors);
+    } else {
+      //Returning Visitor.
+      if(totalVisitors === null){
+          totalVisitors = 0;
+      } else {
+        totalVisitors = parseInt(totalVisitors);
+      }
+    }
+
+    document.getElementById('count').textContent = totalVisitors;
+  }
+
+  updateVisitorCount();
+</script>
+
+</body>
+</html>
